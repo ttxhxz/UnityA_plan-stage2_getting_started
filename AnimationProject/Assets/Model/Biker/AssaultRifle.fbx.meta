@@ -14,7 +14,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: machinegun__blinn
-    second: {fileID: 2100000, guid: 8f4b1d8e63d83d94dbcf1a2c88037565, type: 2}
+    second: {fileID: 2100000, guid: 34e8ed8ce16e9f5418f2c57d6884de4b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -45,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
