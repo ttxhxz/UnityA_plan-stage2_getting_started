@@ -218,9 +218,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 5dc1cf2ce52185842bc9f54f8598331d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6bb5b58bc80a06a449e558bcc1f0942e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dc1cf2ce52185842bc9f54f8598331d, type: 3}
   m_IsPrefabAsset: 0
+--- !u!1 &668346337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100272, guid: 5dc1cf2ce52185842bc9f54f8598331d,
+    type: 3}
+  m_PrefabInternal: {fileID: 656980540}
+--- !u!114 &668346338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668346337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b631e190e4b6d45b6b7acc7509a87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1037016453
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +359,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 0e0bf47eceabb3f4f8876f3a1f7e8e63, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 0e0bf47eceabb3f4f8876f3a1f7e8e63, type: 3}
       propertyPath: m_Controller
@@ -348,6 +368,10 @@ Prefab:
     - target: {fileID: 100000, guid: 0e0bf47eceabb3f4f8876f3a1f7e8e63, type: 3}
       propertyPath: m_Name
       value: Biker
+      objectReference: {fileID: 0}
+    - target: {fileID: 400216, guid: 0e0bf47eceabb3f4f8876f3a1f7e8e63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e0bf47eceabb3f4f8876f3a1f7e8e63, type: 3}
