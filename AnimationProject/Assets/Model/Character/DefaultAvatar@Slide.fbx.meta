@@ -157,7 +157,8 @@ ModelImporter:
     400148: Spine
     400150: TongueBack
     400152: TongueTip
-    7400000: _29_B_a_U1_M_P_RunSlide_ToRight_R_Fb_p0_No_0_2
+    7400000: Run
+    7400002: Slider
     9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
@@ -187,7 +188,106 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: _29_B_a_U1_M_P_RunSlide_ToRight_R_Fb_p0_No_0_2
+      firstFrame: 255
+      lastFrame: 332
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Slider
+      takeName: _29_B_a_U1_M_P_RunSlide_ToRight_R_Fb_p0_No_0_2
+      firstFrame: 262
+      lastFrame: 313
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Collider
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.18
+            value: 0.5
+            inSlope: 2.0442905
+            outSlope: 2.0442905
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.49278814
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.78
+            value: 0.5
+            inSlope: -1.7398599
+            outSlope: -1.7398599
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.4408169
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
