@@ -78,8 +78,9 @@ public class Player : MonoBehaviour
                     //重置碰撞点的y为  (hit.transform.position.y + hit.collider.bounds.size.y) 代表障碍物的初始y值加上障碍物的y
                     point.y = (hit.transform.position.y + hit.collider.bounds.size.y) + 0.11f;
                     //为了扶到墙的中间，而不是墙的边缘加上墙的z的一半
-                    point.z = hit.transform.position.z + hit.collider.bounds.size.z / 2;
+                    //point.z = hit.transform.position.z + hit.collider.bounds.size.z / 2;
                     matchTarget = point;
+                    Debug.Log(matchTarget);
                 }
             }
         }
