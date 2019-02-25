@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
 
     private int ColliderId = Animator.StringToHash("Collider");
 
-    public Vector3 matchTarget;
+    public Vector3 matchTarget = Vector3.zero;
+    public GameObject Log = null;
 
     private Animator ani;
     private CharacterController controller;
@@ -57,6 +58,22 @@ public class Player : MonoBehaviour
 
         //ani.SetFloat(verticalId, Input.GetAxis("Vertical") * 4.1f);//StringToHash把参数字符串转换成ID 前后
         #endregion
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Log")
+        {
+            Destroy(other.gameObject);
+            CarryWood();
+
+        }
+    }
+
+    void CarryWood()
+    {
+        Log.SetActive(true);
 
     }
 
