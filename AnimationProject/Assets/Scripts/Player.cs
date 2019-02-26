@@ -12,14 +12,16 @@ public class Player : MonoBehaviour
     private int SpeedZId = Animator.StringToHash("SpeedZ");
     private int VaultId = Animator.StringToHash("Vault");
     private int SliderId = Animator.StringToHash("Slider");
-
     private int ColliderId = Animator.StringToHash("Collider");
-
-    public Vector3 matchTarget = Vector3.zero;
-    public GameObject Log = null;
+    private int IsHoldLogId = Animator.StringToHash("IsHoldLog");
 
     private Animator ani;
     private CharacterController controller;
+
+    public Vector3 matchTarget = Vector3.zero;
+    public GameObject Log = null;
+    public Transform LeftHand;
+    public Transform RightHand;
 
     void Start()
     {
@@ -74,7 +76,7 @@ public class Player : MonoBehaviour
     void CarryWood()
     {
         Log.SetActive(true);
-
+        ani.SetBool(IsHoldLogId, true);
     }
 
     //翻墙动作
@@ -135,6 +137,26 @@ public class Player : MonoBehaviour
         {
             ani.MatchTarget(matchTarget, Quaternion.identity, AvatarTarget.LeftHand, new MatchTargetWeightMask(new Vector3(1, 0, 1), 0), 0.16f, 0.67f);
             controller.enabled = ani.GetFloat(ColliderId) <= 0.5;
+        }
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        if (layerIndex == 1)
+        {
+            //通过是否拾取木头来赋值。。返回true赋值权重为1.否则权重为0
+            int weight = ani.GetBool(IsHoldLogId) ? 1 : 0;
+
+            //设置左手IK的坐标和旋转以及权重
+            ani.SetIKPosition(AvatarIKGoal.LeftHand, LeftHand.position);
+            ani.SetIKPositionWeight(AvatarIKGoal.LeftHand, weight);
+            ani.SetIKRotation(AvatarIKGoal.LeftHand, LeftHand.rotation);
+            ani.SetIKRotationWeight(AvatarIKGoal.LeftHand, weight);
+
+            ani.SetIKPosition(AvatarIKGoal.RightHand, RightHand.position);
+            ani.SetIKPositionWeight(AvatarIKGoal.RightHand, weight);
+            ani.SetIKRotation(AvatarIKGoal.RightHand, RightHand.rotation);
+            ani.SetIKRotationWeight(AvatarIKGoal.RightHand, weight);
         }
     }
 }
