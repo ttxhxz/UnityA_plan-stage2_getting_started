@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     public GameObject Log = null;
     public Transform LeftHand;
     public Transform RightHand;
+    public PlayableDirector director;
 
     void Start()
     {
@@ -69,7 +71,10 @@ public class Player : MonoBehaviour
         {
             Destroy(other.gameObject);
             CarryWood();
-
+        }
+        if (other.tag == "Playable")
+        {
+            director.Play();
         }
     }
 
@@ -99,7 +104,6 @@ public class Player : MonoBehaviour
                     //为了扶到墙的中间，而不是墙的边缘加上墙的z的一半
                     //point.z = hit.transform.position.z + hit.collider.bounds.size.z / 2;
                     matchTarget = point;
-                    Debug.Log(matchTarget);
                 }
             }
         }
