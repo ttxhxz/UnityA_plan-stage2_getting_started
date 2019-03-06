@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AlermLight : MonoBehaviour
 {
+    public static AlermLight _instance;
+
     public bool alermOn;
 
     private float lowIntensity = 0f;
@@ -19,6 +21,7 @@ public class AlermLight : MonoBehaviour
         targetIntensity = hightIntensity;
         light = this.GetComponent<Light>();
 
+        _instance = this;
     }
 
     // Use this for initialization
