@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController _instance;
+
     public bool alermOn = false;
+    public Vector3 lastPlayerPosition = Vector3.zero;
     private GameObject[] Sirens;
 
     // Use this for initialization
     void Start()
     {
-        Sirens = GameObject.FindGameObjectsWithTag("Siren");
+        _instance = this;
+        Sirens = GameObject.FindGameObjectsWithTag(Tags.siren);
     }
 
     // Update is called once per frame
@@ -37,4 +41,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 警报响起，更新玩家位置
+    /// </summary>
+    /// <param name="playerPosition">玩家最后出现的坐标</param>
+    public void SeePlayer(Vector3 playerPosition)
+    {
+        alermOn = true;
+        lastPlayerPosition = playerPosition;
+    }
 }
