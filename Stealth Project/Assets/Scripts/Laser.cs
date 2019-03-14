@@ -11,10 +11,12 @@ public class Laser : MonoBehaviour
     private float timer = 0;
 
     private Renderer renderer;
+    private BoxCollider boxCollider;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-        renderer = GetComponent<Renderer>();
+        renderer = this.GetComponent<Renderer>();
+        boxCollider = this.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class Laser : MonoBehaviour
                 if (timer > onTime)
                 {
                     renderer.enabled = false;
+                    boxCollider.enabled = false;
                     timer = 0;
                 }
             }
@@ -36,6 +39,7 @@ public class Laser : MonoBehaviour
                 if (timer > offTime)
                 {
                     renderer.enabled = true;
+                    boxCollider.enabled = true;
                     timer = 0;
                 }
             }

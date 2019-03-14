@@ -8,7 +8,7 @@ public class Lift : MonoBehaviour
     public Transform inner_left;
     public Transform outer_right;
     public Transform inner_right;
-    private float inner_door_moveSpeed = 3;
+    private float inner_door_moveSpeed = 5;
 
     void Update()
     {

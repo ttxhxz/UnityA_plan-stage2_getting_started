@@ -9,6 +9,8 @@ public class Door : MonoBehaviour
     private Animator anim;
     private AudioSource audio;
     private int count = 0;//在Collider中的人物数量
+    public bool reqireKey = false;
+    public AudioSource musicDenied;
 
     private void Awake()
     {
@@ -31,17 +33,51 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == Tags.enemy || other.tag == Tags.player)
+        //检查这个门是否需要钥匙开启
+        if (reqireKey)
         {
-            count++;
+            if (other.tag == Tags.player)
+            {
+                Player player = other.GetComponent<Player>();
+                if (player.hasKey)
+                {
+                    count++;
+                }
+                else
+                {
+                    musicDenied.Play();
+                }
+            }
+        }
+        else
+        {
+            if (other.tag == Tags.enemy || other.tag == Tags.player)
+            {
+                count++;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == Tags.enemy || other.tag == Tags.player)
+        //检查这个门是否需要钥匙开启
+        if (reqireKey)
         {
-            count--;
+            if (other.tag == Tags.player)
+            {
+                Player player = other.GetComponent<Player>();
+                if (player.hasKey)
+                {
+                    count--;
+                }
+            }
+        }
+        else
+        {
+            if (other.tag == Tags.enemy || other.tag == Tags.player)
+            {
+                count--;
+            }
         }
     }
 }

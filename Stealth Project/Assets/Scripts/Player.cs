@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float rotateSpeed = 7;
     private Animator anim;
     private AudioSource audio;
+    public bool hasKey = false;
 
     private int speedId = Animator.StringToHash("Speed");
     private int sneakId = Animator.StringToHash("Sneak");
