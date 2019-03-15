@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Siren
+  - Enemy
   layers:
   - Default
   - TransparentFX
