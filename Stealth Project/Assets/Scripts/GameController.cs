@@ -13,13 +13,13 @@ public class GameController : MonoBehaviour
     public AudioSource musicPanic;
 
     private GameObject[] Sirens;
-    
+
     void Awake()
     {
         _instance = this;
         Sirens = GameObject.FindGameObjectsWithTag(Tags.siren);
     }
-    
+
     void Update()
     {
         AlermLight._instance.alermOn = this.alermOn;
@@ -28,26 +28,14 @@ public class GameController : MonoBehaviour
             //缓慢切换普通背景音乐
             musicNormal.volume = Mathf.Lerp(musicNormal.volume, 0f, Time.deltaTime * musicFadeSpeed);
             musicPanic.volume = Mathf.Lerp(musicPanic.volume, 0.5f, Time.deltaTime * musicFadeSpeed);
-
-            foreach (GameObject item in Sirens)
-            {
-                AudioSource audio = item.GetComponent<AudioSource>();
-                if (!audio.isPlaying)
-                {
-                    audio.Play();
-                }
-            }
+            PlaySiren();
         }
         else
         {
             //缓慢切换警报背景音乐
             musicNormal.volume = Mathf.Lerp(musicNormal.volume, 0.5f, Time.deltaTime * musicFadeSpeed);
             musicPanic.volume = Mathf.Lerp(musicPanic.volume, 0f, Time.deltaTime * musicFadeSpeed);
-
-            foreach (GameObject item in Sirens)
-            {
-                item.GetComponent<AudioSource>().Stop();
-            }
+            StopSiren();
         }
     }
 
@@ -59,5 +47,26 @@ public class GameController : MonoBehaviour
     {
         alermOn = true;
         lastPlayerPosition = playerPosition;
+    }
+
+    private void PlaySiren()
+    {
+        AudioSource audio;
+        foreach (GameObject item in Sirens)
+        {
+            audio = item.GetComponent<AudioSource>();
+            if (!audio.isPlaying)
+            {
+                audio.Play();
+            }
+        }
+    }
+
+    private void StopSiren()
+    {
+        foreach (GameObject item in Sirens)
+        {
+            item.GetComponent<AudioSource>().Stop();
+        }
     }
 }

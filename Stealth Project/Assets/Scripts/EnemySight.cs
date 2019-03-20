@@ -12,12 +12,27 @@ public class EnemySight : MonoBehaviour
     private SphereCollider collider;
     private Animator playerAnim;
     private NavMeshAgent navAgent;
+    private Vector3 preLastPlayerPosition;
 
     private void Awake()
     {
         collider = this.GetComponent<SphereCollider>();
         playerAnim = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<Animator>();
         navAgent = this.GetComponent<NavMeshAgent>();
+    }
+
+    private void Start()
+    {
+        preLastPlayerPosition = GameController._instance.lastPlayerPosition;
+    }
+
+    private void Update()
+    {
+        if (preLastPlayerPosition != GameController._instance.lastPlayerPosition)
+        {
+            alertPosition = GameController._instance.lastPlayerPosition;
+            preLastPlayerPosition = GameController._instance.lastPlayerPosition;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -31,6 +46,7 @@ public class EnemySight : MonoBehaviour
             {
                 playerSight = true;
                 alertPosition = other.transform.position;
+                GameController._instance.SeePlayer(other.transform.position);
             }
             else
             {
