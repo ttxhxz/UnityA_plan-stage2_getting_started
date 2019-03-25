@@ -17,6 +17,8 @@ public class EnemyMoveAI : MonoBehaviour
     {
         navAgent = this.GetComponent<NavMeshAgent>();
         navAgent.destination = wayPoints[index].position;
+        navAgent.updatePosition = false;
+        navAgent.updateRotation = false;
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class EnemyMoveAI : MonoBehaviour
     {
         if (navAgent.remainingDistance < 0.5f)
         {
-            navAgent.isStopped = true;
+            //navAgent.isStopped = true;
             patrolTimer += Time.deltaTime;
             if (patrolTimer > patrolTime)
             {
@@ -38,7 +40,7 @@ public class EnemyMoveAI : MonoBehaviour
                 index %= wayPoints.Length;
                 navAgent.destination = wayPoints[index].position;
                 patrolTimer = 0;
-                navAgent.isStopped = false;
+                //navAgent.isStopped = false;
             }
         }
     }
