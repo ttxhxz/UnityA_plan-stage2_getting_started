@@ -25,11 +25,13 @@ public class EnemyMoveAI : MonoBehaviour
     void Update()
     {
         Patrolling();
+        Debug.Log(navAgent.destination);
     }
 
     //巡逻
     void Patrolling()
     {
+        Debug.Log(navAgent.remainingDistance);
         if (navAgent.remainingDistance < 0.5f)
         {
             //navAgent.isStopped = true;

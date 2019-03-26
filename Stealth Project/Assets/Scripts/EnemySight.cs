@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class EnemySight : MonoBehaviour
 {
-    public bool playerSight = false;
     public float fieldOfView = 110;
+    public bool playerSight = false;
     public Vector3 alertPosition = Vector3.zero;
 
+    private NavMeshAgent navAgent;
     private SphereCollider collider;
     private Animator playerAnim;
-    private NavMeshAgent navAgent;
     private Vector3 preLastPlayerPosition;
 
     private void Awake()
@@ -39,14 +39,22 @@ public class EnemySight : MonoBehaviour
     {
         if (other.tag == Tags.player)
         {
-            Vector3 forward = transform.forward;
-            Vector3 playerDir = other.transform.position - transform.position;
-            float temp = Vector3.Angle(forward, playerDir);
-            if (temp <= 0.5f * fieldOfView)
+            Vector3 direction = other.transform.position - transform.position;
+            float angle = Vector3.Angle(direction, transform.forward);
+
+            if (angle <= 0.5f * fieldOfView)
             {
-                playerSight = true;
-                alertPosition = other.transform.position;
-                GameController._instance.SeePlayer(other.transform.position);
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, collider.radius))
+                {
+                    if (hit.collider.tag == Tags.player)
+                    {
+                        playerSight = true;
+                        alertPosition = other.transform.position;
+                        GameController._instance.SeePlayer(other.transform.position);
+                    }
+                }
+
             }
             else
             {
@@ -55,32 +63,7 @@ public class EnemySight : MonoBehaviour
 
             if (playerAnim.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
             {
-                NavMeshPath path = new NavMeshPath();
-                if (navAgent.CalculatePath(other.transform.position, path))
-                {
-                    //Vector3[] wayPoints = new Vector3[path.corners.Length + 2];
-                    //wayPoints[0] = transform.position;
-                    //wayPoints[wayPoints.Length - 1] = other.transform.position;
 
-                    //path里面已经包含起始位置和结束位置
-                    Vector3[] wayPoints = new Vector3[path.corners.Length];
-
-                    for (int i = 0; i < path.corners.Length; i++)
-                    {
-                        wayPoints[i] = path.corners[i];
-                    }
-
-                    float length = 0;
-                    for (int i = 1; i < wayPoints.Length; i++)
-                    {
-                        length += (wayPoints[i] - wayPoints[i - 1]).magnitude;
-                    }
-
-                    if (length < collider.radius)
-                    {
-                        alertPosition = other.transform.position;
-                    }
-                }
             }
 
         }
@@ -91,6 +74,41 @@ public class EnemySight : MonoBehaviour
         if (other.tag == Tags.player)
         {
             alertPosition = other.transform.position;
+        }
+    }
+
+    float CalcuatePathLength(Vector3 targetPosition)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        if (navAgent.enabled)
+        {
+            if (navAgent.CalculatePath(targetPosition, path))
+            {
+                //Vector3[] wayPoints = new Vector3[path.corners.Length + 2];
+                //wayPoints[0] = transform.position;
+                //wayPoints[wayPoints.Length - 1] = other.transform.position;
+
+                //path里面已经包含起始位置和结束位置
+                Vector3[] wayPoints = new Vector3[path.corners.Length];
+
+                for (int i = 0; i < path.corners.Length; i++)
+                {
+                    wayPoints[i] = path.corners[i];
+                }
+
+                float pathLength = 0f;
+                for (int i = 0; i < wayPoints.Length - 1; i++)
+                {
+                    pathLength += Vector3.Distance(wayPoints[i], wayPoints[i + 1]);
+                }
+
+                if (pathLength < collider.radius)
+                {
+                    alertPosition = targetPosition;
+                }
+            }
+
         }
     }
 

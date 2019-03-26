@@ -48,7 +48,7 @@ public class EnemyAnimation : MonoBehaviour
             }
             anim.SetFloat(angularspeedId, angleRad);
         }
-        Debug.Log(anim.GetFloat(speedId));
-        Debug.Log(anim.GetFloat(angularspeedId));
+        //Debug.Log(anim.GetFloat(speedId));
+        //Debug.Log(anim.GetFloat(angularspeedId));
     }
 }
