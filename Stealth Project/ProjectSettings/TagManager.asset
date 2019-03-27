@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Siren
   - Enemy
+  - MainLight
+  - AlarmLight
+  - Fader
+  - WayPoint
+  - Alarm
   layers:
   - Default
   - TransparentFX
@@ -16,8 +21,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - PlayArea
+  - Extents
   - 
   - 
   - 

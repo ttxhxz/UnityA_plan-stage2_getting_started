@@ -8,7 +8,7 @@ public class CCTVCam : MonoBehaviour
     {
         if (other.tag == Tags.player)
         {
-            GameController._instance.SeePlayer(other.transform.position);
+            //GameController._instance.SeePlayer(other.transform.position);
         }
     }
 }
