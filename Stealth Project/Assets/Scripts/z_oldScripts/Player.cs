@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
+
+    #region 旧代码
     public float moveSpeed = 3;
     public float rotateSpeed = 7;
     private Animator anim;
@@ -11,7 +12,7 @@ public class Player : MonoBehaviour
     public bool hasKey = false;
 
     private int speedId = Animator.StringToHash("Speed");
-    private int sneakId = Animator.StringToHash("Sneak");
+    private int sneakId = Animator.StringToHash("Sneaking");
     private int deadId = Animator.StringToHash("Dead");
 
     private void Awake()
@@ -84,4 +85,5 @@ public class Player : MonoBehaviour
             audio.Stop();
         }
     }
+    #endregion
 }
