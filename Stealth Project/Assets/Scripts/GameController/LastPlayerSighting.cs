@@ -8,8 +8,8 @@ public class LastPlayerSighting : MonoBehaviour
     public Vector3 position = new Vector3(1000f, 1000f, 1000f);
     //玩家重置坐标
     public Vector3 resetPosition = new Vector3(1000f, 1000f, 1000f);
-    //主相机亮度最大,最小值,更改速度，音乐更改速度
-    public float lightHighIntensity = 0.25f;
+    //主灯光(mainLight)亮度最大,最小值,更改速度，音乐更改速度
+    public float lightHighIntensity = 0.75f;
     public float lightLowIntensity = 0f;
     public float fadeSpeed = 7f;
     public float musicFadeSpeed = 1f;
