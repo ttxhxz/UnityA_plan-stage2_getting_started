@@ -11,5 +11,5 @@ public class Tags
     public const string mainLight = "MainLight";
     public const string fader = "Fader";
     public const string enemy = "Enemy";
-
+    public const string mainCamera = "MainCamera";
 }
