@@ -653,6 +653,8 @@ GameObject:
   - component: {fileID: 197276858}
   - component: {fileID: 197276856}
   - component: {fileID: 197276855}
+  - component: {fileID: 197276852}
+  - component: {fileID: 197276853}
   m_Layer: 0
   m_Name: char_robotGuard
   m_TagString: Enemy
@@ -660,6 +662,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &197276852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197276851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34d1e301ce95b64bb716c42648fedad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldOfViewAngle: 110
+  playerInSight: 0
+  personalLastSighting: {x: 0, y: 0, z: 0}
+--- !u!114 &197276853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197276851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f6f0cc4b7f0de448dcfb98211dac61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &197276855
 NavMeshAgent:
   m_ObjectHideFlags: 0
