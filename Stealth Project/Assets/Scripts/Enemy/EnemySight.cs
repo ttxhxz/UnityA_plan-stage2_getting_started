@@ -7,6 +7,7 @@ public class EnemySight : MonoBehaviour
 {
     public float fieldOfViewAngle = 110f;
     public bool playerInSight;
+    //敌人本身听到的玩家最后位置
     public Vector3 personalLastSighting;
 
     private NavMeshAgent nav;

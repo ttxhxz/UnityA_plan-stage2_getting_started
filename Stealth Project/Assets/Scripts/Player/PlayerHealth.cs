@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour
         anim.SetFloat(hash.speedFloat, 0f);
         playerMovement.enabled = false;
         lastPlayerSighting.position = lastPlayerSighting.resetPosition;
-        audio.Stop();
+        //audio.Stop();
     }
 
     void LevelReset()
